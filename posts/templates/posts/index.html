@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h1>INDEX</h1>
+  {% for post in posts %}
+    <p>{{post.title}} : {{post.content}} : {{post.user}}</p>
+    {% if user in post.like_users.all %}
+      <a href="{% url 'posts:like' post.id %}" class="btn btn-primary">좋아요 </a>
+    {% else %}
+      <a href="{% url 'posts:like' post.id %}" class="btn btn-secondary">좋아요 </a>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
